@@ -4,11 +4,13 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
+    var hashTable = {};
     for(var i = 0; i < nums.length; i++) {
-        for(var j = i+1; j < nums.length; j++) {
-            if(nums[i] + nums[j] === target) {
-                return [i, j];
-            }
+        var targetComplement = target - nums[i];
+        if(targetComplement in hashTable) {
+            return [hashTable[targetComplement], i]
+        } else {
+            hashTable[nums[i]] = i;
         }
     }
 };
