@@ -12,20 +12,23 @@
  */
 var invertTree = function(root) {
     
-    innerFunction = (currentNode) => {
-        if(currentNode) {
-            if(!currentNode.left && !currentNode.right) {
+    function innerFunction (node) {
+        if(node) {
+            if(node.left === null && node.right === null) {
                 return;
             }
-            var temp = currentNode.right;
-            currentNode.right = currentNode.left;
-            currentNode.left = temp;
+            var temp = node.left;
+            node.left = node.right;
+            node.right = temp;
             
-            innerFunction(currentNode.left);
-            innerFunction(currentNode.right);
+            innerFunction(node.left);
+            innerFunction(node.right);
         }
     }
     
+    
+    
     innerFunction(root);
+    
     return root;
 };
