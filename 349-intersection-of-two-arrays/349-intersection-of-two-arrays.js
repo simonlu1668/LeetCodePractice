@@ -4,43 +4,15 @@
  * @return {number[]}
  */
 var intersection = function(nums1, nums2) {
-    let hashTable = {};
-    
-    
-    if(nums1.length > nums2.length) {
-        for(let i = 0; i < nums1.length; i++) {
-        if(!hashTable[nums1[i]]) {
-            hashTable[nums1[i]] = 1;
-        }
-    }
-    
-    for(let i = 0; i < nums1.length; i++) {
-        if(hashTable[nums2[i]]) {
-            hashTable[nums2[i]]++;
-        }
-    } 
-    } else {
-         for(let i = 0; i < nums1.length; i++) {
-        if(!hashTable[nums1[i]]) {
-            hashTable[nums1[i]] = 1;
-        }
-    }
-    
-    for(let i = 0; i < nums2.length; i++) {
-        if(hashTable[nums2[i]]) {
-            hashTable[nums2[i]]++;
-        }
-    }
-    }
-    
-   
-    
-    let result = [];
-    
-    for(const key in hashTable) {
-        if(hashTable[key] > 1) {
-            result.push(key);
-        }
-    }
+       let result = [];
+    let setNum1 = new Set(nums1);
+    let setNum2 = new Set(nums2);
+
+    let [smallSet , largeSet] = (setNum1.length < setNum2.length) ? [setNum1 , setNum2] : [setNum2 , setNum1];
+
+    smallSet.forEach( num => {
+        largeSet.has(num) && result.push(num);
+    });
+
     return result;
 };
