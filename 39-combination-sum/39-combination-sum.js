@@ -5,12 +5,14 @@
  */
 var combinationSum = function(candidates, target) {
     let result = [];
+    let hashMap = {};
     
     const innerFunction = (slate, currentTarget) => {
         if(currentTarget === 0){
-            if(JSON.stringify(result).includes(JSON.stringify(slate.sort((a,b)=>a-b)))){
+            if(hashMap[slate.sort((a,b)=>a-b)]){
                 return;
             }
+            hashMap[slate.sort((a,b)=>a-b)] = 1;
             result.push(slate.sort((a,b)=> a-b));
             return;
         }
