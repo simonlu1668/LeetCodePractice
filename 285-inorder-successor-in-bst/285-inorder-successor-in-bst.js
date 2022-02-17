@@ -14,10 +14,9 @@ var inorderSuccessor = function(root, p) {
     if(!root) {
         return null;
     }
-    
-    let current = p;
+
     if(p.right){
-        current = p.right;
+        let current = p.right;
         while(current.left) {
             current = current.left;
         }
