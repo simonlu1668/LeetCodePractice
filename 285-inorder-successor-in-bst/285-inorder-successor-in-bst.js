@@ -26,14 +26,14 @@ var inorderSuccessor = function(root, p) {
         let prev = null;
         let current = root;
         while(current.val !== p.val) {
-            if(current.val > p.val) {
+            if(current.val < p.val){
+                current = current.right;
+            } else {
                 prev = current;
                 current = current.left;
-            } else {
-                current = current.right;
             }
         }
-       return prev;
+       return prev; 
     }
     
 };
