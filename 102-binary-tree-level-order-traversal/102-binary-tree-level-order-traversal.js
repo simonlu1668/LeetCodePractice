@@ -1,6 +1,6 @@
 var levelOrder = function(root) {
     if (root == null) return [];
-    let queue = [root], values = [];
+    let queue = [root], result = [];
     while (queue.length > 0) {
         let len = queue.length, level = [];
         for (let i = 0; i < len; i++) {
@@ -9,7 +9,7 @@ var levelOrder = function(root) {
             if (node.left) queue.push(node.left);
             if (node.right) queue.push(node.right);
         }
-        values.push(level);
+        result.push(level);
     }
-    return values;
+    return result;
 }
