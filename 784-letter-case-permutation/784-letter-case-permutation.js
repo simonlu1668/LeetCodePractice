@@ -5,21 +5,21 @@
 var letterCasePermutation = function(s) {
     let result = [];
     
-    const helper = (slate, index) => {
-      if(slate.length === s.length){
-          result.push(slate);
-      } else {
-            if(s[index].toLowerCase() !== s[index].toUpperCase()){
-                  helper(slate+s[index].toLowerCase(), index+1);
-                  helper(slate+s[index].toUpperCase(), index+1);
-          } else {
-            helper(slate+s[index], index+1);
-          }
-      }
+    const innerFunction = (slate = '', bag = s) => {
+        if(slate.length === s.length) {
+            result.push(slate);
+            return;
+        } else {
+            if(bag[0].toLowerCase() === bag[0].toUpperCase()) {
+                innerFunction(slate+bag[0], bag.slice(1));
+            } else {
+                innerFunction(slate+bag[0].toLowerCase(), bag.slice(1));
+                innerFunction(slate+bag[0].toUpperCase(), bag.slice(1));
+            }
+        }
     }
     
-    
-    helper('', 0)
+    innerFunction();
     
     return result;
 };
