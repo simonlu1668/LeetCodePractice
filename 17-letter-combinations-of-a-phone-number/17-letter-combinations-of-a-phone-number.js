@@ -3,11 +3,11 @@
  * @return {string[]}
  */
 var letterCombinations = function(digits) {
-    let results = [];
-    if(digits.length === 0) {
-        return results;
+    if(digits.length <= 0) {
+        return [];
     }
-    let hashObject = {
+    let result = [];
+    let hash = {
         '2': 'abc',
         '3': 'def',
         '4': 'ghi',
@@ -15,24 +15,26 @@ var letterCombinations = function(digits) {
         '6': 'mno',
         '7': 'pqrs',
         '8': 'tuv',
-        '9': 'wxyz'
+        '9': 'wxyz', 
     }
     
-    const innerFunction = (slate, index, length) => {
-        if(length === 0) {
-            results.push(slate);
+    const innerFunction = (current, index) => {
+        if(current.length == digits.length){
+            result.push(current);
+            return;
         } else {
-            let letters = digits[index];
-            for(let j = 0; j < hashObject[letters].length; j++) {
-                innerFunction(slate + hashObject[letters][j], index+1, length-1);
-            }   
+                   for(let i = 0; i < hash[digits[index]].length; i++) {
+            innerFunction(current+hash[digits[index]][i], index+1);
         }
+        
+        }
+ 
+        
     }
     
-    let firstLetters = hashObject[digits[0]]; 
-    for(let i = 0; i < firstLetters.length; i++) {
-        innerFunction(firstLetters[i], 1, digits.length-1);
+    for(let i = 0; i < hash[digits[0]].length; i++) {
+        innerFunction(hash[digits[0]][i], 1);
     }
     
-    return results;
+    return result;
 };
