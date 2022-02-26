@@ -4,25 +4,24 @@
  */
 var permuteUnique = function(nums) {
     let result = [];
-    let hashTable = {};
+    let hashmap = {};
     
-    const innerFunction = (slate, bag) => {
-      
-        if(bag.length == 0 && !hashTable[slate]){
-            hashTable[slate] = 1;
-            result.push(slate);
-            return;
-        } 
-        
-        for(let i = 0; i < bag.length; i++) {
-            innerFunction(slate.concat(bag[i]), bag.slice(0,i).concat(bag.slice(i+1)));
+    const innerFunction = (slate = [], bag = nums) => {
+        if(bag.length == 0) {
+            if(!hashmap[slate]) {
+                hashmap[slate] = 1;
+                   result.push(slate);
+            }
+         
+        } else {
+            for(let i = 0; i < bag.length; i++) {
+                innerFunction(slate.concat(bag[i]), bag.slice(0,i).concat(bag.slice(i+1)));
+            }
         }
     }
     
     
-    for(let i = 0; i < nums.length; i++){
-        innerFunction([nums[i]], nums.slice(0,i).concat(nums.slice(i+1)));
-    }
+    innerFunction();
     
     return result;
 };
