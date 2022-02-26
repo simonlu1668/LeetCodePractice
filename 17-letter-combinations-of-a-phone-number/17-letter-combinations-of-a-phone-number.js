@@ -32,9 +32,7 @@ var letterCombinations = function(digits) {
         
     }
     
-    for(let i = 0; i < hash[digits[0]].length; i++) {
-        innerFunction(hash[digits[0]][i], 1);
-    }
+   innerFunction('', 0)
     
     return result;
 };
