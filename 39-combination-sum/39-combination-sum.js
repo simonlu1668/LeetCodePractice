@@ -5,30 +5,30 @@
  */
 var combinationSum = function(candidates, target) {
     let result = [];
-    let hashMap = {};
+    let hashmap = {};
     
-    const innerFunction = (slate, currentTarget) => {
-        if(currentTarget === 0){
-            if(hashMap[slate.sort((a,b)=>a-b)]){
-                return;
+    const innerFunction = (slate, current) => { 
+
+        if(current === 0) {
+            if(!hashmap[slate.sort((a,b)=>a-b)]) {
+                 result.push(slate);
+                hashmap[slate.sort((a,b)=>a-b)]=1;
             }
-            hashMap[slate.sort((a,b)=>a-b)] = 1;
-            result.push(slate.sort((a,b)=> a-b));
+           
             return;
         }
         
-        if(currentTarget < 0) {
+        if(current < 0) {
             return;
         }
         
-        for(let candidate of candidates){
-            innerFunction(slate.concat(candidate), currentTarget-candidate);
+        for(let candidate of candidates) {
+            innerFunction(slate.concat(candidate), current-candidate);
         }
-    };
-    
-    for(let candidate of candidates){
-        innerFunction([candidate], target-candidate);
     }
+    
+    
+    innerFunction([], target);
     
     return result;
 };
