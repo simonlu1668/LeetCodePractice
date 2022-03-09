@@ -13,14 +13,16 @@
 var preorderTraversal = function(root) {
     let result = [];
     
-    
     const innerFunction = (node) => {
-        if(node) {
-            result.push(node.val);
-            innerFunction(node.left);
-            innerFunction(node.right);
+        if(node){
+             result.push(node.val);
+        innerFunction(node.left);
+        innerFunction(node.right);
         }
+      
     }
+    
+    
     
     innerFunction(root);
     return result;
