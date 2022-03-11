@@ -11,25 +11,32 @@
  * @return {number}
  */
 var minDepth = function(root) {
-    let min = Infinity;
-    if(!root){
-        return 0;
-    }
+    if(!root) return 0;
+   let maxDepth = Infinity;
     
-    const innerFunction = (node, currentDepth = 1) => {
+    const innerFunction = (node, currentDepth) => {
         if(!node){
+             maxDepth = Math.min(currentDepth, maxDepth);
             return;
         }
         if(!node.left && !node.right){
-            min = Math.min(currentDepth, min);
+            maxDepth = Math.min(currentDepth, maxDepth);
             return;
         }
-        innerFunction(node.left, currentDepth+1);
-        innerFunction(node.right, currentDepth+1);
+        if(node.left){
+               innerFunction(node.left, currentDepth+1);
+   
+        }
+        
+        if(node.right){
+              innerFunction(node.right, currentDepth+1);
+        }
+        
+   
     }
     
     
-    innerFunction(root);
+    innerFunction(root, 1);
     
-    return min;
+    return maxDepth;
 };
