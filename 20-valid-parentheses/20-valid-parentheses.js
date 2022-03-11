@@ -3,16 +3,21 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    const stack = [];
-    const chars = {
-        '(': ')',
-        '[': ']',
-        '{': '}'
-    }
+    let stack = [];
+    let hashmap = {
+        '}' : '{',
+        ']' : '[',
+        ')' : '(',
+    };
     
-    for (const ch of s) {
-        if (ch in chars) stack.push(chars[ch]);
-        else if (stack.pop() !== ch) return false;
+    for(let letter of s){
+        if(!hashmap[letter]){
+            stack.push(letter);
+        } else {
+            if(hashmap[letter] !== stack.pop()){
+                return false;
+            }
+        }
     }
     
     return stack.length === 0;
