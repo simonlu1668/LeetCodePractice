@@ -15,7 +15,6 @@ var construct2DArray = function(original, m, n) {
         result.push(temp);
     }
     
-    console.log(result.flat(), original.flat());
     if(result.flat().length !== originalLength)return [];
     
     return result;
