@@ -3,16 +3,14 @@
  * @return {number}
  */
 var fib = function(n) {
-    let sum = 0;
-    const innerFunction = (current) => {
-        if(current === 0) return 0;
-        if(current === 1) return 1;
-        
-        return innerFunction(current-1) + innerFunction(current-2);
+    
+    if(n<2) return n;
+    let n1 =0
+    let n2=1
+    for (let i=2;i<n;i++){
+        let sum=n1+n2
+        n1=n2;
+        n2=sum;
     }
-    
-    return innerFunction(n);
-    
-    return sum;
-    
+    return n1+n2;
 };
