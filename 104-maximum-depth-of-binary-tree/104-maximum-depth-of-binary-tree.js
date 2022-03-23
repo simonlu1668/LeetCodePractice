@@ -11,18 +11,16 @@
  * @return {number}
  */
 var maxDepth = function(root) {
-    let result = 0;
+    let maxDepth = 0;
+    if(!root) return 0;
     
-    const innerFunction = (node, currentDepth) => {
-        if(node){
-            result = Math.max(currentDepth, result);
-            innerFunction(node.left, currentDepth+1);
-            innerFunction(node.right, currentDepth+1);
-        }
+    const innerFunction = (node, currentDepth = 1) =>{
+        if(!node.left && !node.right) maxDepth = Math.max(currentDepth, maxDepth);
+        if(node.left) innerFunction(node.left, currentDepth+1);
+        if(node.right) innerFunction(node.right, currentDepth+1);
     }
     
+    innerFunction(root);
     
-    innerFunction(root, 1)
-    
-    return result;
+    return maxDepth;
 };
