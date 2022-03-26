@@ -3,9 +3,6 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-    // use hashmap to store each sorted word, and the index of the result it's in
-    // if it doesn't exist, add index 1?
-    
     let result = [];
     let hashmap = {};
     let currentIndex = 0;
