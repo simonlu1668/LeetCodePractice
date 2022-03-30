@@ -3,7 +3,7 @@
  * @return {number}
  */
 var removeDuplicates = function(nums) {
- let left = 0;
+    let left = 0;
     let right = left+1;
     let answer = 0;
     while(right <= nums.length) {
@@ -18,5 +18,4 @@ var removeDuplicates = function(nums) {
     } 
     return answer;
     return nums;
-    
 };
