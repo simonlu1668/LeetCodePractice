@@ -4,17 +4,18 @@
  */
 var groupAnagrams = function(strs) {
     let result = [];
-    let hashmap = {};
+    let anagrams = {};
     let currentIndex = 0;
-    for(let i = 0; i < strs.length; i++) {
+    
+    for(let i = 0; i< strs.length; i++){
         let sortedWord = strs[i].split('').sort().join('');
-        if(!hashmap[sortedWord] && hashmap[sortedWord] !== 0){
-            hashmap[sortedWord] = currentIndex;
+        if(!anagrams[sortedWord] && anagrams[sortedWord] !== 0){
             result[currentIndex] = [strs[i]];
+            anagrams[sortedWord] = currentIndex;
             currentIndex++;
         } else {
-            result[hashmap[sortedWord]].push(strs[i]);
-        }
+            result[anagrams[sortedWord]].push(strs[i]);
+        } 
     }
     
     return result;
