@@ -3,9 +3,6 @@
  * @return {void} Do not return anything, modify s in-place instead.
  */
 var reverseString = function(s) {
-    if(!s){
-        return;
-    }
     
     const innerFunction = (left, right) => {
         if(left >= right) return;
@@ -14,11 +11,6 @@ var reverseString = function(s) {
         s[left] = temp;
         innerFunction(left+1, right-1);
     }
-    
     innerFunction(0, s.length-1);
-    
     return s;
-    
-    
-    
 };
