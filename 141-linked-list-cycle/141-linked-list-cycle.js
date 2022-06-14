@@ -11,7 +11,7 @@
  * @return {boolean}
  */
 var hasCycle = function(head) {
-    if(!head) return false;
+
      let fast = head;
   while (fast && fast.next) {
     head = head.next;
@@ -19,6 +19,5 @@ var hasCycle = function(head) {
     if (head === fast) return true;
   }
   return false;
-    
-    return false;
+
 };
