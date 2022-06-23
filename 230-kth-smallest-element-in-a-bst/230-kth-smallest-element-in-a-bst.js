@@ -24,6 +24,5 @@ var kthSmallest = function(root, k) {
     }
     inner(root);
     result = result.sort((a,b)=> a-b);
-    result.unshift([]);
-    return result[k];
+    return result[k-1];
 };
