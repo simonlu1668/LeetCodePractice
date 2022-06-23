@@ -18,13 +18,11 @@ var kthSmallest = function(root, k) {
     const inner = (currentNode) => {
         if(!currentNode) return;
         inner(currentNode.left);
-     
         result.push(currentNode.val);
-        if(result.length == k) return currentNode.val;
-    
         inner(currentNode.right);
+        if(result.length == k) return currentNode.val;
+
     }
     inner(root);
-    result = result.sort((a,b)=> a-b);
     return result[k-1];
 };
