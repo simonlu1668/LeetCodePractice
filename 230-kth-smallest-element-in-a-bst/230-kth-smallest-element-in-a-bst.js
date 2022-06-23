@@ -21,7 +21,6 @@ var kthSmallest = function(root, k) {
         result.push(currentNode.val);
         inner(currentNode.right);
         if(result.length == k) return currentNode.val;
-
     }
     inner(root);
     return result[k-1];
