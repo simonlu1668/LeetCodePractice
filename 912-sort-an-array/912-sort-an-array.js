@@ -32,7 +32,7 @@ var sortArray = function(nums) {
             temp.push(rightHalf[right]);
             right++;
         }
-        return [...temp];
+        return temp;
     }
     
     return innerFunction(nums);
