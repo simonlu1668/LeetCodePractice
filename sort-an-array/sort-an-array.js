@@ -5,8 +5,6 @@
 var sortArray = function(nums) {
     //step one break the array into smallest form
     let midPoint = Math.floor(nums.length/2);
-    let leftHalf = nums.slice(0,midPoint);
-    let rightHalf = nums.slice(midPoint);
     const innerFunction = (currentArray) => {
         if(currentArray.length === 1) return currentArray;
         let midPoint = Math.floor(currentArray.length/2);
