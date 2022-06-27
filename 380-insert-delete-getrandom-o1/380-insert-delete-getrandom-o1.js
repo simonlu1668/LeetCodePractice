@@ -1,7 +1,6 @@
 
 var RandomizedSet = function() {
     this.randomizedSet = {};
-   
 };
 
 /** 
